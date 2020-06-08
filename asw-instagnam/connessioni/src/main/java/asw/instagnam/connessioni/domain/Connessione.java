@@ -20,8 +20,5 @@ public class Connessione {
 		this.followed = followed; 
 	}
 
-	public Connessione() {
-		// TODO Auto-generated constructor stub
-	}
 	
 }

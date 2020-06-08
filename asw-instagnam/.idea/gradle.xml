@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../../../../../../Gradle/gradle-6.2.2" />
+        <option name="gradleJvm" value="13" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/api-gateway" />
+            <option value="$PROJECT_DIR$/common-api-command" />
+            <option value="$PROJECT_DIR$/common-api-event" />
+            <option value="$PROJECT_DIR$/connessioni" />
+            <option value="$PROJECT_DIR$/connessioni-service-api-event" />
+            <option value="$PROJECT_DIR$/connessioni-service-event" />
+            <option value="$PROJECT_DIR$/ricette" />
+            <option value="$PROJECT_DIR$/ricette-seguite" />
+            <option value="$PROJECT_DIR$/ricette-service-api-command" />
+            <option value="$PROJECT_DIR$/ricette-service-api-event" />
+            <option value="$PROJECT_DIR$/ricette-service-event" />
+          </set>
+        </option>
+        <option name="useQualifiedModuleNames" value="true" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

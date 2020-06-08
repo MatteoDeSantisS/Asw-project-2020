@@ -15,12 +15,21 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
+	implementation project(":common-api-event")
+	implementation project(":ricette-service-api-event")
+	implementation project(":common-api-command")
+	implementation project(":ricette-service-api-command")
+	implementation project(":connessioni-service-api-event")
+
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
     implementation ("io.springfox:springfox-swagger2:${swaggerVersion}") {
         exclude group: "org.springframework"
     }
+
+	implementation 'org.springframework.kafka:spring-kafka'
     implementation ("io.springfox:springfox-swagger-ui:${swaggerVersion}"){
         exclude group: "org.springframework"
     }

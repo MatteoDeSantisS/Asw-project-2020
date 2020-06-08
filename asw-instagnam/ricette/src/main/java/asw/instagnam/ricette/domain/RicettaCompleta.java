@@ -6,7 +6,8 @@ import lombok.*;
 
 /* Ricetta, in formato completo. */ 
 @Entity 
-@Data @NoArgsConstructor
+@Data
+@NoArgsConstructor
 public class RicettaCompleta {
 
 	@Id 
@@ -23,23 +24,6 @@ public class RicettaCompleta {
 		this.preparazione = preparazione; 
 	}
 
-	public RicettaCompleta() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public String getAutore() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Long getId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getTitolo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }
