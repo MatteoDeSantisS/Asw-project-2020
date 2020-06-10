@@ -1,13 +1,10 @@
 package asw.instagnam.connessioni.domain;
 
 import asw.instagnam.common.api.event.DomainEvent;
-import asw.instagnam.connessioni.service.api.event.ConnessioneEventCreated;
+import asw.instagnam.connessioni.service.api.event.CreateConnessioneEvent;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 
-import java.util.logging.Logger; 
 import java.util.*; 
 
 @Service
@@ -21,7 +18,7 @@ public class ConnessioniService {
  	public Connessione createConnessione(String follower, String followed) {
 		Connessione connessione = new Connessione(follower, followed); 
 		connessione = connessioniRepository.save(connessione);
-		DomainEvent event = new ConnessioneEventCreated(connessione.getId(),connessione.getFollower(),connessione.getFollowed());
+		DomainEvent event = new CreateConnessioneEvent(connessione.getId(),connessione.getFollower(),connessione.getFollowed());
 		connessioneDomainEventPublisher.publish(event);
 		return connessione;
 	}

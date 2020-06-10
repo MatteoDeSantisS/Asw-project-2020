@@ -1,9 +1,6 @@
 package asw.instagnam.ricetteseguite.domain;
 
-import java.util.*; 
+public class RicetteService {
 
-public interface RicetteService {
-
-	public Collection<Ricetta> getRicetteByAutore(String autore); 
-	
+    /*tutto tuo france*/
 }

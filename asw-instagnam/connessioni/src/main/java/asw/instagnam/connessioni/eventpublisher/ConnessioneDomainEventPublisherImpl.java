@@ -6,9 +6,11 @@ import asw.instagnam.connessioni.domain.ConnessioneDomainEventPublisher;
 import asw.instagnam.connessioni.service.api.event.ConnessioniServiceEventChannel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.logging.Logger;
 
+@Component
 public class ConnessioneDomainEventPublisherImpl implements ConnessioneDomainEventPublisher {
 
     private final Logger logger = Logger.getLogger(ConnessioneDomainEventPublisherImpl.class.toString());

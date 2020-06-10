@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -18,6 +19,7 @@
             <option value="$PROJECT_DIR$/connessioni-service-event" />
             <option value="$PROJECT_DIR$/ricette" />
             <option value="$PROJECT_DIR$/ricette-seguite" />
+            <option value="$PROJECT_DIR$/ricette-seguite-service-api-event" />
             <option value="$PROJECT_DIR$/ricette-service-api-command" />
             <option value="$PROJECT_DIR$/ricette-service-api-event" />
             <option value="$PROJECT_DIR$/ricette-service-event" />

@@ -19,4 +19,5 @@ include 'common-api-event'
 include 'ricette-service-api-command'
 include 'ricette-service-api-event'
 include 'connessioni-service-api-event'
+include 'ricette-seguite-service-api-event'
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
@@ -9,10 +10,10 @@
         </processorPath>
         <module name="asw-instagnam.ricette-service-api-event.main" />
         <module name="asw-instagnam.ricette.main" />
-        <module name="asw-instagnam.ricette-service-api-command.main" />
-        <module name="asw-instagnam.connessioni-service-api-event.main" />
-        <module name="asw-instagnam.connessioni.main" />
         <module name="asw-instagnam.ricette-seguite.main" />
+        <module name="asw-instagnam.ricette-service-api-command.main" />
+        <module name="asw-instagnam.connessioni.main" />
+        <module name="asw-instagnam.connessioni-service-api-event.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8" />

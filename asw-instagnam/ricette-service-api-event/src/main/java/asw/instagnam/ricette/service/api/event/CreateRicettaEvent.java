@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RicettaCreatedEvent implements DomainEvent {
+public class CreateRicettaEvent implements DomainEvent {
     private Long id;
     private String autore;
     private String Titolo_ricetta;

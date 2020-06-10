@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConnessioneEventCreated implements DomainEvent {
+public class CreateConnessioneEvent implements DomainEvent {
     private Long id;
     private String follower;
     private String followed;
