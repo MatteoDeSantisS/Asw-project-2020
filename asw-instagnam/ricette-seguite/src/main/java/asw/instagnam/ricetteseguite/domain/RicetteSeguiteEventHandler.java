@@ -15,11 +15,11 @@ public class RicetteSeguiteEventHandler {
     @Autowired
     private RicetteSeguiteService ricetteSeguiteService;
     @Autowired
+    private RicetteService ricetteService;
+    @Autowired
     private ConnessioniService connessioniService;
 
-
     public void onEvent(DomainEvent event){
-
 
         logger.info("PROCESSING COMMAND: " + event);
         if (event.getClass().equals(CreateRicettaEvent.class)) {
@@ -35,13 +35,15 @@ public class RicetteSeguiteEventHandler {
                 logger.info("UNKNOWN COMMAND: " + event);
             }
         }
-
     }
+
     private void createRicetta(CreateRicettaEvent event) {
-        ricetteSeguiteService.createRicetta(event.getAutore(), event.getTitolo_ricetta());
+        ricetteService.createRicetta(event.getAutore(), event.getTitolo_ricetta());
     }
 
     private  void createConnessione(CreateConnessioneEvent event){
+
         connessioniService.createConnessione(event.getFollower(),event.getFollowed());
+        ricetteSeguiteService.createRicetteSeguite(event.getFollower(),event.getFollowed());
     }
 }

@@ -9,5 +9,4 @@ public interface RicetteRepository extends CrudRepository<Ricetta,Long> {
 
 	public Collection<Ricetta> getRicetteByAutore(String autore);
 
-	
 }

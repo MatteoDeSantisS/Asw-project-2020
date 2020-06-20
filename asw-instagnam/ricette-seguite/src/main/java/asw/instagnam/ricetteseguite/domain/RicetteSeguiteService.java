@@ -2,6 +2,7 @@ package asw.instagnam.ricetteseguite.domain;
 
 import asw.instagnam.ricetteseguite.repository.ConnessioneRepository;
 import asw.instagnam.ricetteseguite.repository.RicetteRepository;
+import asw.instagnam.ricetteseguite.repository.RicetteSeguiteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,32 +14,26 @@ import java.util.*;
 public class RicetteSeguiteService {
 
 	@Autowired
+	private RicetteSeguiteRepository ricetteSeguiteRepository;
+
+	@Autowired
 	private ConnessioneRepository connessioneRepository;
 
-	@Autowired 
+	@Autowired
 	private RicetteRepository ricetteRepository;
 
+	public Collection<RicettaSeguita> createRicetteSeguite(String follower, String followed) {
 
-
-	public Ricetta createRicetta(String autore, String titolo_ricetta) {
-	Ricetta ricetta=new Ricetta(autore,titolo_ricetta);
-	ricetta=ricetteRepository.save(ricetta);
-	return ricetta;
-    }
-
-
-	/* da implementare in un'altra classe/
-	/* Trova le ricette (in formato breve) degli utenti seguiti da utente. */
-	public Collection<Ricetta> getRicetteSeguite(String utente) {
-		Collection<Ricetta> ricette = new ArrayList<>(); 
-		Collection<Connessione> connessioni = connessioneRepository.getConnessioniByFollower(utente);
-		for (Connessione connessione : connessioni) {
-			String followed = connessione.getFollowed();
-			Collection<Ricetta> ricetteByFollowed = connessioneRepository.getRicetteByAutore(followed);
-			ricette.addAll(ricetteByFollowed);
+		Collection<Ricetta> ricette = ricetteRepository.getRicetteByAutore(followed);
+		for(Ricetta ricetta: ricette){
+			RicettaSeguita ricettaSeguita = new RicettaSeguita(follower, ricetta.getId(), followed, ricetta.getTitolo());
+			ricetteSeguiteRepository.save(ricettaSeguita);
 		}
-		return ricette; 
+		Collection<RicettaSeguita> ricetteSeguite = ricetteSeguiteRepository.getRicetteSeguiteByUtenteFollower(follower);
+		return ricetteSeguite;
 	}
 
-
+	public Collection<RicettaSeguita> getRicetteSeguite(String follower){
+		return ricetteSeguiteRepository.getRicetteSeguiteByUtenteFollower(follower);
+	}
 }

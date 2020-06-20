@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 @Entity
 @Data
 @NoArgsConstructor
+
 public class RicettaSeguita {
     private String utenteFollower;
     private Long idRicetta;
