@@ -29,12 +29,14 @@ dependencies {
         exclude group: "org.springframework"
     }
 
-	implementation 'org.springframework.kafka:spring-kafka'
+
     implementation ("io.springfox:springfox-swagger-ui:${swaggerVersion}"){
         exclude group: "org.springframework"
     }
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.hsqldb:hsqldb'
+	implementation 'org.postgresql:postgresql'
+	implementation 'org.springframework.kafka:spring-kafka'
+
 
 }

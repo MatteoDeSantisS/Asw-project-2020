@@ -9,5 +9,5 @@ import java.util.*;
 public interface ConnessioneRepository extends CrudRepository <Connessione,Long>{
 
 	public Collection<Connessione> getConnessioniByFollower(String follower);
-	public Collection<Ricetta> getRicetteByAutore(String followed);
+	public Collection<Connessione> getConnessioniByFollowed(String followed);
 }

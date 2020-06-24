@@ -4,13 +4,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 @Data
 @NoArgsConstructor
-
 public class RicettaSeguita {
+
     private String utenteFollower;
+    @Id
     private Long idRicetta;
     private String autoreRicetta;
     private String titoloRicetta;

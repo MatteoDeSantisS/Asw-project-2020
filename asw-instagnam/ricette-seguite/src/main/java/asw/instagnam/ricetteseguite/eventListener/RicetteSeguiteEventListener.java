@@ -19,13 +19,18 @@ public class RicetteSeguiteEventListener {
     @Autowired
     private RicetteSeguiteEventHandler ricetteSeguiteEventHandler;
 
-    @KafkaListener(topics = RicettaServiceEventChannel.channel)
-    public void listen(ConsumerRecord<String, DomainEvent> record) throws Exception {
+    @KafkaListener(topics = RicettaServiceEventChannel.channelRicette)
+    public void listenRicette(ConsumerRecord<String, DomainEvent> record) throws Exception {
         logger.info("EVENT LISTENER: " + record.toString());
         DomainEvent event = record.value();
         ricetteSeguiteEventHandler.onEvent(event);
     }
 
-
+    @KafkaListener(topics = RicettaServiceEventChannel.channelConnessioni)
+    public void listenConnessioni(ConsumerRecord<String, DomainEvent> record) throws Exception {
+        logger.info("EVENT LISTENER: " + record.toString());
+        DomainEvent event = record.value();
+        ricetteSeguiteEventHandler.onEvent(event);
+    }
 
 }

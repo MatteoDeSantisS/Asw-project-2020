@@ -15,7 +15,7 @@ public class RicettaDomainEventPublisherImpl implements RicettaDomainEventPublis
     @Autowired
     private KafkaTemplate<String, DomainEvent> template;
 
-    private String channel = RicettaServiceEventChannel.channel;
+    private String channel = RicettaServiceEventChannel.channelRicette;
 
     @Override
     public void publish(DomainEvent domainEvent) {
