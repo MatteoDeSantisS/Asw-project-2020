@@ -1,5 +1,6 @@
-version: '2'
+version: '3'
 services:
+
   postgres_connessioni:
     image: postgres
     volumes:
@@ -22,6 +23,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
 
+
   postgres_ricetteseguite:
     image: postgres
     volumes:
@@ -32,8 +34,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
-  
-      
+
   zookeeper:
     image: wurstmeister/zookeeper
     ports:

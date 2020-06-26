@@ -21,48 +21,55 @@ import java.util.*;
 @RestController
 public class ConnessioniController {
 
-	@Autowired 
-	private ConnessioniService connessioniService; 
+	@Autowired
+	private ConnessioniService connessioniService;
 
-	private final Logger logger = Logger.getLogger(ConnessioniController.class.toString()); 
+	private final Logger logger = Logger.getLogger(ConnessioniController.class.toString());
 
-	/* Crea una nuova connessione. 
-	* la richiesta contiene nel corpo una stringa della forma follower:followed */ 
+	/* Crea una nuova connessione.
+	 * la richiesta contiene nel corpo una stringa della forma follower:followed */
 	@PostMapping("/connessioni")
 	public Connessione createConnessione(@RequestBody CreateConnessioneRequest request) {
 		String follower = request.getFollower();
 		String followed = request.getFollowed();
-		logger.info("REST CALL: createConnessione " + follower + ", " + followed); 
+		logger.info("REST CALL: createConnessione " + follower + ", " + followed);
 		Connessione connessione = connessioniService.createConnessione(follower, followed);
-		return connessione; 
-	}	
+		return connessione;
+	}
 
-	/* Trova la connessione con connessioneId. */ 
+	/* Trova la connessione con connessioneId. */
 	@GetMapping("/connessioni/{connessioneId}")
 	public Connessione getConnessione(@PathVariable Long connessioneId) {
-		logger.info("REST CALL: getConnessione " + connessioneId); 
+		logger.info("REST CALL: getConnessione " + connessioneId);
 		Connessione connessione = connessioniService.getConnessione(connessioneId);
-		if (connessione!=null) {
+		if (connessione != null) {
 			return connessione;
 		} else {
 			throw new ResponseStatusException(
-				HttpStatus.NOT_FOUND, "Connessione not found"
+					HttpStatus.NOT_FOUND, "Connessione not found"
 			);
 		}
 	}
 
-	/* Trova tutte le connessioni (o tutte le connessioni di follower). */ 
+	/* Trova tutte le connessioni (o tutte le connessioni di follower). */
 	@GetMapping("/connessioni")
-	public Collection<Connessione> getConnessioni(@RequestParam(value="follower", required=false) String follower) {
-		Collection<Connessione> connessioni = null; 
-		if (follower==null) {
-			logger.info("REST CALL: getConnessioni"); 
-			connessioni = connessioniService.getConnessioni();
-		} else {
-			logger.info("REST CALL: getConnessioni " + follower); 
-			connessioni = connessioniService.getConnessioniByFollower(follower);
-		}
+	public Collection<Connessione> getConnessioni() {
+		Collection<Connessione> connessioni = connessioniService.getConnessioni();
+		logger.info("REST CALL: getConnessioni");
 		return connessioni;
 	}
 
+	/* trova tutte le connessioni di un follower) */
+	@GetMapping("/connessioni-follower/{follower}")
+	public Collection<Connessione> getConnessioniFollower(@PathVariable String follower) {
+		Collection<Connessione> connessioni = connessioniService.getConnessioniByFollower(follower);
+		if (connessioni != null) {
+			logger.info("REST CALL: getConnessioni");
+			return connessioni;
+		}else{
+			throw new ResponseStatusException(
+					HttpStatus.NOT_FOUND, "Connessione not found"
+			);
+		}
+	}
 }

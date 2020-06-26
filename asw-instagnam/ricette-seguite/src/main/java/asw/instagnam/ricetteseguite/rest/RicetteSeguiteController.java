@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody; 
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 
 import java.util.logging.Logger; 
 import java.util.*; 
@@ -25,12 +26,27 @@ public class RicetteSeguiteController {
 	private RicetteSeguiteService ricetteSeguiteService;
 
 	/* Trova le ricette (in formato breve) degli utenti seguiti da utente. */ 
-	@GetMapping("/ricetteseguite/{utente}")
-	public Collection<RicettaSeguita> getRicetteSeguite(@PathVariable String utente) {
-		logger.info("REST CALL: getRicetteSeguite " + utente); 
-		Collection<RicettaSeguita> ricette = ricetteSeguiteService.getRicetteSeguite(utente);
+	@GetMapping("/ricetteseguite")
+	public Collection<RicettaSeguita> getRicetteSeguiteUtente() {
+		Collection<RicettaSeguita> ricette = ricetteSeguiteService.getRicetteSeguite();
 		logger.info("getRicetteSeguite(): " + ricette);
-		return ricette; 
+		return ricette;
+
 	}
-	
+	/* Trova tutte le ricette  seguite dal follower */
+	@GetMapping("/ricetteseguite-follower/{follower}")
+	public Collection<RicettaSeguita> getRicetteSeguiteUtente(@PathVariable String follower) {
+		Collection<RicettaSeguita> ricette = ricetteSeguiteService.getRicetteSeguiteFollower(follower);
+		if(ricette!=null){
+			return ricette;
+		}else{
+			throw new ResponseStatusException(
+					HttpStatus.NOT_FOUND, "Connessione not found"
+			);
+		}
+
+	}
+
+
+
 }

@@ -25,7 +25,7 @@ public class RicetteSeguiteService {
 	public Collection<RicettaSeguita> createRicetteSeguite(String follower, String followed) {
 
 		Collection<Ricetta> ricette = ricetteRepository.getRicetteByAutore(followed);
-		for(Ricetta ricetta: ricette){
+		for (Ricetta ricetta : ricette) {
 			RicettaSeguita ricettaSeguita = new RicettaSeguita(follower, ricetta.getId(), followed, ricetta.getTitolo());
 			ricetteSeguiteRepository.save(ricettaSeguita);
 		}
@@ -33,7 +33,11 @@ public class RicetteSeguiteService {
 		return ricetteSeguite;
 	}
 
-	public Collection<RicettaSeguita> getRicetteSeguite(String follower){
+	public Collection<RicettaSeguita> getRicetteSeguiteFollower(String follower) {
 		return ricetteSeguiteRepository.getRicetteSeguiteByUtenteFollower(follower);
+	}
+
+	public Collection<RicettaSeguita> getRicetteSeguite() {
+		return ricetteSeguiteRepository.findAll();
 	}
 }
